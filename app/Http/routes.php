@@ -15,7 +15,7 @@ use App\GameService;
 use App\Server;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 Route::auth();
@@ -23,7 +23,7 @@ Route::auth();
 Route::get('/home', 'HomeController@index');
 
 Route::group(['prefix' => 'api'], function () {
-    Route::any('/slack', function (Request $request, GameService $gameService) {
+    Route::any('/slack', function (\Illuminate\Http\Request $request, GameService $gameService) {
         $token = $request->get('token');
         $team_id = $request->get('team_id');
         $team_domain = $request->get('team_domain');
@@ -33,13 +33,13 @@ Route::group(['prefix' => 'api'], function () {
         $user_name = $request->get('user_name');
         $command = $request->get('command');
         $arguments = explode(' ', $request->get('text'));
-
-        if ($command != '/gamecraft') return;
+        
+        if (strtolower($command) != '/gamecraft') return;
 
         $action = $arguments[0];
         $gameArgument = $arguments[1];
 
-        switch ($gameArgument) {
+        switch (strtolower($gameArgument)) {
             case 'minecraft':
                 $gameService->setGame(Server::GAME_MINECRAFT);
                 break;
@@ -54,17 +54,19 @@ Route::group(['prefix' => 'api'], function () {
             case 'start':
                 $gameService->start();
 
-                return 'Starting game';
+                break;
             case 'stop':
                 $gameService->stop();
 
-                return 'Stopping game';
+                break;
             case 'resume':
                 $gameService->resume();
 
-                return 'Resume game';
+                break;
+            default:
+                return 'doe ff een goed command swa';
         }
 
-        return 'doe ff een goed command swa';
+        return;
     });
 });
