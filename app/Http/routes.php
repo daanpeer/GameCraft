@@ -15,7 +15,7 @@ use App\GameService;
 use App\Server;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 Route::auth();
@@ -34,12 +34,12 @@ Route::group(['prefix' => 'api'], function () {
         $command = $request->get('command');
         $arguments = explode(' ', $request->get('text'));
         
-        if ($command != '/gamecraft') return;
+        if (strtolower($command) != '/gamecraft') return;
 
         $action = $arguments[0];
         $gameArgument = $arguments[1];
 
-        switch ($gameArgument) {
+        switch (strtolower($gameArgument)) {
             case 'minecraft':
                 $gameService->setGame(Server::GAME_MINECRAFT);
                 break;
