@@ -6,9 +6,13 @@ namespace App\Jobs;
 
 use App\Events\ServerStarting;
 use App\Server;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Queue\SerializesModels;
 
-class CreateServer extends Job
+class CreateServer extends Job implements ShouldQueue
 {
+    use SerializesModels;
+    
     private $game;
 
     /**

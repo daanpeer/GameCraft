@@ -66,6 +66,10 @@ Route::group(['prefix' => 'api'], function () {
                 $gameService->resume();
 
                 break;
+            case 'pause':
+                $gameService->pause();
+
+                break;
             default:
                 return 'doe ff een goed command swa';
         }
