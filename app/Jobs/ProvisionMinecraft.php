@@ -26,11 +26,10 @@ class ProvisionMinecraft
     {
         echo "PROVISIONING MINECRAFT ON " . $this->server->name;// TODO
 
-        $cd = app_path() . '/provisioning/minecraft/';
+        $cd = 'cd ' . app_path() . '/provisioning/minecraft/';
 
         try {
-            $process = new Process($cd . ' && envoy run minecraft_provision --host=root@' . $this->server->ip);
-            echo $process->getOutput();
+            shell_exec($cd . ' && envoy run minecraft_provision --host=root@' . $this->server->ip);
 
             $this->server->status = Server::RUNNING;
             $this->server->save();
