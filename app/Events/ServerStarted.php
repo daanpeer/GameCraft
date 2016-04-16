@@ -4,7 +4,7 @@
 namespace App\Events;
 
 
-class ServerStarted extends Event
+class ServerRunning extends Event
 {
     public $server;
 

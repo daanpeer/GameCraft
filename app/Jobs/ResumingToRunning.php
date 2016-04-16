@@ -4,6 +4,7 @@
 namespace App\Jobs;
 
 
+use App\Events\ServerRunning;
 use App\Server;
 
 class ResumingToRunning extends Job
@@ -19,6 +20,8 @@ class ResumingToRunning extends Job
 
                 $server->status = Server::RUNNING;
                 $server->save();
+
+                event(new ServerRunning($server));
             }
         }
     }

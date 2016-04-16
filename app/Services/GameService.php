@@ -2,37 +2,57 @@
 namespace App;
 
 
+use App\Jobs\CreateServer;
+use App\Jobs\DestroyServer;
+use App\Jobs\ResumeServer;
+use Illuminate\Foundation\Bus\DispatchesJobs;
 use Maknz\Slack\Facades\Slack;
 
 class GameService
 {
-    protected $game;
+    use DispatchesJobs;
 
+    protected $game;
 
     public function start()
     {
+        $existingServer = Server::where('game', $this->getGame())->first();
+
+        if($existingServer != null) {
+            Slack::send('There is already a server running this game :o');
+            return;
+        }
+
+
         Slack::send('Starting server');
 
-        // @todo start $game
-        // @todo slack send ip enzo
-
-        Slack::send('Server started');
+        $this->dispatch(new CreateServer($this->getGame()));
     }
 
     public function stop()
     {
-        // @todo start $game
-        // @todo slack send
+        $server = Server::where('game', $this->getGame())->first();
 
-        Slack::send('Stopped server');
+        if($server == null) {
+            Slack::send("I can't find a server with this game.");
+
+            return;
+        }
+
+        $this->dispatch(new DestroyServer($server));
     }
 
     public function resume()
     {
-        // @todo start $game
-        // @todo slack send
+        $server = Server::where('game', $this->getGame())->first();
 
-        Slack::send('Resuming server');
+        if($server == null) {
+            Slack::send("I can't find a server with this game.");
+
+            return;
+        }
+
+        $this->dispatch(new ResumeServer($server));
     }
 
     /**

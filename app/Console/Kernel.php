@@ -31,7 +31,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('server:pipeline')->everyMinute();
+//        $schedule->command('server:pipeline')->everyMinute();
 
         // $schedule->command('inspire')
         //          ->hourly();
