@@ -4,9 +4,12 @@ namespace App\Console\Commands;
 
 use App\Server;
 use Illuminate\Console\Command;
+use Illuminate\Foundation\Bus\DispatchesJobs;
 
 class DestroyServer extends Command
 {
+    use DispatchesJobs;
+    
     /**
      * The name and signature of the console command.
      *
