@@ -31,8 +31,14 @@
                             </tbody>
                         </table>
 
-                        <a href="" class="btn btn-danger">
-                            <i class="fa fa-trash-o" aria-hidden="true"></i> Delete</a>
+                        <a href="{{ route('server.show', ['id'=> $server->id]) }}/resume" class="btn btn-default">
+                            <i class="fa fa-play" aria-hidden="true"></i> Resume</a>
+                        <a href="{{ route('server.show', ['id'=> $server->id]) }}/pause" class="btn btn-default">
+                            <i class="fa fa-pause" aria-hidden="true"></i> Pause</a>
+
+                        {!! Form::open(['action' => ['ServerController@destroy', $server->id], 'method' => 'delete']) !!}
+                        {!! Form::submit('Destroy', ['class'=>'btn btn-danger btn-mini']) !!}
+                        {!! Form::close() !!}
 
                     </div>
                 </div>

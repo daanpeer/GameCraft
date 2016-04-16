@@ -22,6 +22,8 @@ Route::auth();
 
 Route::get('/home', 'HomeController@index');
 Route::resource('/server', 'ServerController');
+Route::resource('/server/{id}/resume', 'ServerController@resume');
+Route::resource('/server/{id}/pause', 'ServerController@pause');
 
 Route::group(['prefix' => 'api'], function () {
     Route::any('/slack', function (\Illuminate\Http\Request $request, GameService $gameService) {

@@ -2,13 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\DestroyServer;
+use App\Jobs\PauseServer;
 use App\Server;
+use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Illuminate\Queue\Jobs\Job;
+use Prologue\Alerts\Facades\Alert;
 
 class ServerController extends Controller
 {
+    use DispatchesJobs;
+
     /**
      * Display a listing of the resource.
      *
@@ -66,6 +73,32 @@ class ServerController extends Controller
         //
     }
 
+    public function pause($id)
+    {
+        $server = Server::find($id);
+
+        if ($server) {
+            $this->dispatch(new PauseServer($server));
+        }
+
+        Alert::info('Server will pause')->flash();
+
+        return redirect(route('server.show', ['id' => $server->id]));
+
+    }
+
+    public function resume($id)
+    {
+        $server = Server::find($id);
+
+        if ($server) {
+//            $this->dispatch(new ResumeServer($server));
+        }
+        Alert::info('Server will resume')->flash();
+
+        return redirect(route('server.show', ['id' => $server->id]));
+    }
+
     /**
      * Update the specified resource in storage.
      *
@@ -86,6 +119,15 @@ class ServerController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $server = Server::find($id);
+
+        if ($server) {
+            $this->dispatch(new DestroyServer($server));
+            Alert::info('Server will be destroyed')->flash();
+        } else {
+            Alert::warning('Server not found');
+        }
+
+        return redirect(route('server.index'));
     }
 }
