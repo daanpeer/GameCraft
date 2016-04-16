@@ -14,6 +14,8 @@ class ResumingToRunning extends Job
         $servers = Server::where('status', Server::RESUMING)->get();
 
         foreach($servers as $server) {
+            sleep(15);
+            
             $do = \DigitalOcean::droplet()->getById($server->do_id);
             if($do->status == "active") {
                 $server->ip = $do->networks[0]->ipAddress;
