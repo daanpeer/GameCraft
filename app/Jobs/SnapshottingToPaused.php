@@ -4,6 +4,7 @@
 namespace App\Jobs;
 
 
+use App\Events\ServerPaused;
 use App\Server;
 
 class SnapshottingToPaused extends Job
@@ -25,6 +26,8 @@ class SnapshottingToPaused extends Job
                 $server->do_id = 0;
                 $server->status = Server::PAUSED;
                 $server->save();
+
+                event(new ServerPaused($server));
             }
         }
     }

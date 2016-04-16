@@ -37,7 +37,5 @@ class PauseServer extends Job
 
         $this->server->status = Server::PAUSING;
         $this->server->save();
-
-        event(new ServerPaused($this->server));
     }
 }
