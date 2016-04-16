@@ -15,6 +15,8 @@ class StartedToProvisioning extends Job
         $servers = Server::where('status', Server::STARTED)->get();
 
         foreach ($servers as $server) {
+            sleep(15);
+
             $server->status = Server::PROVISIONING;
             $server->save();
 
