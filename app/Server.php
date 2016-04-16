@@ -31,9 +31,4 @@ class Server extends Model
     const SNAPSHOTTING = 8;
     const RESUMING = 9;
 
-    public function setStatusAttribute($value)
-    {
-        echo "new status: " . $value;
-        $this->attributes["status"] = $value;
-    }
 }
