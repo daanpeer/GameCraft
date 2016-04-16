@@ -12,14 +12,14 @@ class CreateServerTable extends Migration
      */
     public function up()
     {
-        Schema::create('server', function(Blueprint $table) {
+        Schema::create('servers', function(Blueprint $table) {
             $table->increments('id');
-            $table->integer('da_id');
+            $table->integer('do_id');
             $table->integer('game');
             $table->string('name');
             $table->string('ip', 90);
             $table->integer('status');
-
+            $table->string('snapshot', 200);
             $table->softDeletes();
             $table->timestamps();
         });
@@ -32,6 +32,6 @@ class CreateServerTable extends Migration
      */
     public function down()
     {
-        Schema::drop('server');
+        Schema::drop('servers');
     }
 }

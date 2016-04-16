@@ -1,9 +1,14 @@
 @servers(['web' => $host])
 
-@task('factorio_cleanup')
+@task('factorio_stop')
+    service factorio stop
 @endtask
 
-@task('provision_factorio')
+@task('factorio_start')
+    service factorio start
+@endtask
+
+@task('factorio_provision')
     echo 'downloading factorio'
     wget https://www.dropbox.com/s/doq7h0hi2abcu77/factorio_headless_x64_0.12.29.tar.gz
 
@@ -42,5 +47,7 @@
     echo 'creating config dir'
     sudo -u factorio mkdir -p /opt/factorio/config
     sudo -u factorio wget https://www.dropbox.com/s/0bzugbk9r0cx3pz/config.ini -O /opt/factorio/config/config.ini
+
+    service factorio start
 @endtask
 
