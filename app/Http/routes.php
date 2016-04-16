@@ -23,7 +23,7 @@ Route::auth();
 Route::get('/home', 'HomeController@index');
 
 Route::group(['prefix' => 'api'], function () {
-    Route::any('/slack', function (Request $request, GameService $gameService) {
+    Route::any('/slack', function (\Illuminate\Http\Request $request, GameService $gameService) {
         $token = $request->get('token');
         $team_id = $request->get('team_id');
         $team_domain = $request->get('team_domain');
@@ -33,7 +33,7 @@ Route::group(['prefix' => 'api'], function () {
         $user_name = $request->get('user_name');
         $command = $request->get('command');
         $arguments = explode(' ', $request->get('text'));
-
+        
         if ($command != '/gamecraft') return;
 
         $action = $arguments[0];

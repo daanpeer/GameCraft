@@ -2,6 +2,8 @@
 namespace App;
 
 
+use Maknz\Slack\Facades\Slack;
+
 class GameService
 {
     protected $game;
