@@ -18,5 +18,5 @@ class Server extends Model
     // provision
     // provisioned
     // ready
-    
+
 }

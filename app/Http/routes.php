@@ -54,17 +54,19 @@ Route::group(['prefix' => 'api'], function () {
             case 'start':
                 $gameService->start();
 
-                return 'Starting game';
+                break;
             case 'stop':
                 $gameService->stop();
 
-                return 'Stopping game';
+                break;
             case 'resume':
                 $gameService->resume();
 
-                return 'Resume game';
+                break;
+            default:
+                return 'doe ff een goed command swa';
         }
 
-        return 'doe ff een goed command swa';
+        return;
     });
 });

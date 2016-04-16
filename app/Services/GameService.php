@@ -6,19 +6,25 @@ class GameService
 {
     protected $game;
 
+
     public function start()
     {
-        //@todo start event
+        Slack::send('Starting server');
+        /// lalala
+
+        // @todo: ip enzo
+        Slack::send('Server started');
+
     }
 
     public function stop()
     {
-
+        Slack::send('Stop server');
     }
 
     public function resume()
     {
-
+        Slack::send('Resuming server');
     }
 
     /**
