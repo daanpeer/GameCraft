@@ -12,7 +12,7 @@ use Illuminate\Queue\SerializesModels;
 class CreateServer extends Job implements ShouldQueue
 {
     use SerializesModels;
-    
+
     private $game;
 
     /**
@@ -41,11 +41,7 @@ class CreateServer extends Job implements ShouldQueue
             'name' => $name
         ]);
 
-        if($this->game == 'factorio') {
-            $server->game = Server::GAME_FACTORIO;
-        } elseif($this->game == 'minecraft') {
-            $server->game = Server::GAME_MINECRAFT;
-        }
+        $server->game = $this->game;
 
         $server->save();
 

@@ -44,11 +44,9 @@ Route::group(['prefix' => 'api'], function () {
 
         switch (strtolower($gameArgument)) {
             case 'minecraft':
-                echo 'minecraft ' . $gameArgument;
                 $gameService->setGame(Server::GAME_MINECRAFT);
                 break;
             case 'factorio':
-                echo 'factorio ' . $gameArgument;
                 $gameService->setGame(Server::GAME_FACTORIO);
                 break;
             default:
