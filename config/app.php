@@ -159,6 +159,9 @@ return [
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
         GrahamCampbell\DigitalOcean\DigitalOceanServiceProvider::class,
         Maknz\Slack\SlackServiceProvider::class,
+        Collective\Html\HtmlServiceProvider::class,
+        Prologue\Alerts\AlertsServiceProvider::class,
+
     ],
 
     /*
@@ -203,10 +206,13 @@ return [
         'Storage'   => Illuminate\Support\Facades\Storage::class,
         'URL'       => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
-        'View' => Illuminate\Support\Facades\View::class,
-        
+        'View'      => Illuminate\Support\Facades\View::class,
+
         'DigitalOcean' => GrahamCampbell\DigitalOcean\Facades\DigitalOcean::class,
-        'Slack' => Maknz\Slack\Facades\Slack::class,
+        'Slack'        => Maknz\Slack\Facades\Slack::class,
+        'Form'         => Collective\Html\FormFacade::class,
+        'Html'         => Collective\Html\HtmlFacade::class,
+        'Alert'        => Prologue\Alerts\Facades\Alert::class,
     ],
 
 ];

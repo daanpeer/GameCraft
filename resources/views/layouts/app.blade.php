@@ -50,6 +50,8 @@
             <!-- Left Side Of Navbar -->
             <ul class="nav navbar-nav">
                 <li><a href="{{ url('/home') }}">Home</a></li>
+                <li><a href="{{ url(route('server.index')) }}">Servers</a></li>
+                <li><a href="{{ url(route('server.create')) }}">New Server</a></li>
             </ul>
 
             <!-- Right Side Of Navbar -->
@@ -73,6 +75,12 @@
         </div>
     </div>
 </nav>
+
+@foreach (Alert::getMessages() as $type => $messages)
+    @foreach ($messages as $message)
+        <div class="alert alert-{{ $type }}">{{ $message }}</div>
+    @endforeach
+@endforeach
 
 @yield('content')
 
