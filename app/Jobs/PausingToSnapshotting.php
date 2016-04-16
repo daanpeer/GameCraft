@@ -1,26 +1,27 @@
 <?php
 
 
-namespace app\Jobs;
+namespace App\Jobs;
 
+
+use App\Server;
 
 class PausingToSnapshotting extends Job
 {
-    private $server;
-
-    /**
-     * PausingToSnapshotting constructor.
-     * @param $server
-     */
-    public function __construct($server)
-    {
-        $this->server = $server;
-    }
-    
     public function handle()
     {
-        $do = \DigitalOcean::droplets()->getById($this->server->do_id);
+        $servers = Server::where('status', Server::PAUSING)->get();
 
-        dd($do->status);
+        foreach ($servers as $server)
+        {
+            $do = \DigitalOcean::droplet()->getById($server->do_id);
+
+            if ($do->status == "off") {
+                \DigitalOcean::droplet()->snapshot($server->do_id, $server->name . date('c'));
+
+                $server->status = Server::SNAPSHOTTING;
+                $server->save();
+            }
+        }
     }
 }

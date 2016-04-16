@@ -38,18 +38,14 @@ class SeverStatusses extends Command
      */
     public function handle()
     {
-        $servers = Server::where('status', Server::STARTING)->get();
+        $servers = Server::all();
 
         foreach ($servers as $server) {
+
+         //   \DigitalOcean::droplet()->powerOff($server->do_id);
             $do = \DigitalOcean::droplet()->getById($server->do_id);
 
             dd($do->status);
-//            if($do->status != "new") {
-//                $server->status = Server::STARTED;
-//                $server->ip = $do->networks[0]->ipAddress;
-
-                $server->save();
-//            }
         }
     }
 }

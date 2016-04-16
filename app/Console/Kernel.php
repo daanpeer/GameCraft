@@ -19,6 +19,8 @@ class Kernel extends ConsoleKernel
         Commands\ProvisionServers::class,
         Commands\ServerPipeline::class,
         Commands\DestroyServer::class,
+        Commands\PauseServer::class,
+        Commands\ResumeServer::class,
     ];
 
     /**

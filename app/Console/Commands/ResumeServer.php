@@ -2,21 +2,17 @@
 
 namespace App\Console\Commands;
 
-use App\Jobs\PausingToSnapshotting;
-use App\Jobs\ResumingToRunning;
-use App\Jobs\SnapshottingToPaused;
-use App\Jobs\StartedToProvisioning;
-use App\Jobs\StartingToStarted;
+use App\Server;
 use Illuminate\Console\Command;
 
-class ServerPipeline extends Command
+class ResumeServer extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'server:pipeline';
+    protected $signature = 'server:resume {id}';
 
     /**
      * The console command description.
@@ -42,10 +38,8 @@ class ServerPipeline extends Command
      */
     public function handle()
     {
-        $this->dispatch(new StartingToStarted());
-        $this->dispatch(new StartedToProvisioning());
-        $this->dispatch(new PausingToSnapshotting());
-        $this->dispatch(new SnapshottingToPaused());
-        $this->dispatch(new ResumingToRunning());
+        $server = Server::findOrFail($this->argument('id'));
+
+        $this->dispatch(new \App\Jobs\ResumeServer($server));
     }
 }

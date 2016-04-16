@@ -19,7 +19,7 @@ class CreateServerTable extends Migration
             $table->string('name');
             $table->string('ip', 90);
             $table->integer('status');
-            $table->string('snapshot', 200);
+            $table->integer('snapshot');
             $table->softDeletes();
             $table->timestamps();
         });

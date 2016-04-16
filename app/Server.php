@@ -29,4 +29,11 @@ class Server extends Model
     const PAUSED = 6;
     const PAUSING = 7;
     const SNAPSHOTTING = 8;
+    const RESUMING = 9;
+
+    public function setStatusAttribute($value)
+    {
+        echo "new status: " . $value;
+        $this->attributes["status"] = $value;
+    }
 }
