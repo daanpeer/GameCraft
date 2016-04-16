@@ -3,8 +3,10 @@
 namespace App\Jobs;
 
 use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Bus\SelfHandling;
+use Illuminate\Foundation\Bus\DispatchesJobs;
 
-abstract class Job
+abstract class Job implements SelfHandling
 {
     /*
     |--------------------------------------------------------------------------
@@ -17,5 +19,5 @@ abstract class Job
     |
     */
 
-    use Queueable;
+    use Queueable, DispatchesJobs;
 }

@@ -14,6 +14,13 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         // Commands\Inspire::class,
+        Commands\CreateServer::class,
+        Commands\SeverStatusses::class,
+        Commands\ProvisionServers::class,
+        Commands\ServerPipeline::class,
+        Commands\DestroyServer::class,
+        Commands\PauseServer::class,
+        Commands\ResumeServer::class,
     ];
 
     /**
@@ -24,6 +31,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
+        $schedule->command('server:pipeline')->everyMinute();
+
         // $schedule->command('inspire')
         //          ->hourly();
     }

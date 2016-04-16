@@ -2,6 +2,12 @@
 
 namespace App\Providers;
 
+use App\Events\ServerDestroyed;
+use App\Events\ServerPaused;
+use App\Events\ServerStarted;
+use App\Listeners\ServerDestroyedListener;
+use App\Listeners\ServerPausedListener;
+use App\Listeners\ServerRunningListener;
 use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
@@ -16,6 +22,15 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\SomeEvent' => [
             'App\Listeners\EventListener',
         ],
+        ServerStarted::class => [
+            ServerRunningListener::class
+        ],
+        ServerDestroyed::class => [
+            ServerDestroyedListener::class
+        ],
+        ServerPaused::class => [
+            ServerPausedListener::class
+        ]
     ];
 
     /**
