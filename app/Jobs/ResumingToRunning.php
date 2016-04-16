@@ -16,6 +16,9 @@ class ResumingToRunning extends Job
         foreach($servers as $server) {
             $do = \DigitalOcean::droplet()->getById($server->do_id);
             if($do->status == "active") {
+                $server->ip = $do->networks[0]->ipAddress;
+                $server->save();
+
                 switch ($server->game) {
                     case Server::GAME_FACTORIO:
                         $cd = 'cd ' . app_path() . '/provisioning/factorio/';
