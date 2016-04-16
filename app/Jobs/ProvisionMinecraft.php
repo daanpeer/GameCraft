@@ -6,6 +6,8 @@ namespace App\Jobs;
 
 use App\Events\ServerRunning;
 use App\Server;
+use Symfony\Component\Process\Exception\ProcessFailedException;
+use Symfony\Component\Process\Process;
 
 class ProvisionMinecraft
 {
@@ -24,10 +26,17 @@ class ProvisionMinecraft
     {
         echo "PROVISIONING MINECRAFT ON " . $this->server->name;// TODO
 
-        $this->server->status = Server::RUNNING;
-        $this->server->save();
+        $cd = 'cd ' . app_path() . '/provisioning/minecraft/';
 
-        event(new ServerRunning($this->server));
+        try {
+            shell_exec($cd . ' && envoy run minecraft_provision --host=root@' . $this->server->ip);
 
+            $this->server->status = Server::RUNNING;
+            $this->server->save();
+            event(new ServerRunning($this->server));
+
+        } catch (ProcessFailedException $e) {
+            echo $e->getMessage();
+        }
     }
 }
