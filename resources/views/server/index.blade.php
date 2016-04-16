@@ -21,7 +21,11 @@
                             <tbody>
                             @foreach($servers as $server)
                                 <tr>
-                                    <td>{{$server->name}}</td>
+                                    <td>
+                                        <a href="{{ route('server.show', ['id' => $server->id])  }}">
+                                            {{$server->name}}
+                                        </a>
+                                    </td>
                                     <td>{{$server->game}}</td>
                                     <td>{{$server->ip}}</td>
                                     <td>{{$server->status}}</td>

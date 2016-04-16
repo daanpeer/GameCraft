@@ -50,7 +50,9 @@ class ServerController extends Controller
      */
     public function show($id)
     {
-        //
+        $server = Server::find($id);
+
+        return response()->json($server);
     }
 
     /**
