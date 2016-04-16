@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\CreateServer;
 use App\Jobs\DestroyServer;
 use App\Jobs\PauseServer;
 use App\Server;
@@ -35,7 +36,7 @@ class ServerController extends Controller
      */
     public function create()
     {
-        //
+        return view('server.create');
     }
 
     /**
@@ -46,7 +47,11 @@ class ServerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Alert::info('Starting ' . $request->game . ' server!')->flash();
+
+        $this->dispatch(new CreateServer($request->game));
+
+        return redirect(route('server.index'));
     }
 
     /**

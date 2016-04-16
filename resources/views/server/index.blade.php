@@ -15,7 +15,6 @@
                                 <th>Game</th>
                                 <th>Ip</th>
                                 <th>Status</th>
-                                <th></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -29,10 +28,6 @@
                                     <td>{{$server->game}}</td>
                                     <td>{{$server->ip}}</td>
                                     <td>{{$server->status}}</td>
-                                    <td>
-                                        <a href="" class="btn btn-danger"><i class="fa fa-trash-o"
-                                                                             aria-hidden="true"></i></a>
-                                    </td>
                                 </tr>
                             @endforeach
                             </tbody>
