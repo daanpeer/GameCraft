@@ -4,7 +4,7 @@ namespace App\Providers;
 
 use App\Events\ServerDestroyed;
 use App\Events\ServerPaused;
-use App\Events\ServerRunning;
+use App\Events\ServerStarted;
 use App\Listeners\ServerDestroyedListener;
 use App\Listeners\ServerPausedListener;
 use App\Listeners\ServerRunningListener;
@@ -22,7 +22,7 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\SomeEvent' => [
             'App\Listeners\EventListener',
         ],
-        ServerRunning::class => [
+        ServerStarted::class => [
             ServerRunningListener::class
         ],
         ServerDestroyed::class => [

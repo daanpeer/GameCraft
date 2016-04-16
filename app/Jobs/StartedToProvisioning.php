@@ -4,7 +4,7 @@
 namespace App\Jobs;
 
 
-use App\Events\ServerRunning;
+use App\Events\ServerStarted;
 use App\Server;
 
 class StartedToProvisioning extends Job

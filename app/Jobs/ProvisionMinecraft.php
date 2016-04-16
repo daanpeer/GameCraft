@@ -4,7 +4,7 @@
 namespace App\Jobs;
 
 
-use App\Events\ServerRunning;
+use App\Events\ServerStarted;
 use App\Server;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 use Symfony\Component\Process\Process;
@@ -34,6 +34,6 @@ class ProvisionMinecraft
 
         $this->server->status = Server::RUNNING;
         $this->server->save();
-        event(new ServerRunning($this->server));
+        event(new ServerStarted($this->server));
     }
 }

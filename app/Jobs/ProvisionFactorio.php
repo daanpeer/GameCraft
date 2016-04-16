@@ -4,7 +4,7 @@
 namespace App\Jobs;
 
 
-use App\Events\ServerRunning;
+use App\Events\ServerStarted;
 use App\Server;
 
 class ProvisionFactorio extends Job
@@ -33,7 +33,7 @@ class ProvisionFactorio extends Job
         $this->server->status = Server::RUNNING;
         $this->server->save();
 
-        event(new ServerRunning($this->server));
+        event(new ServerStarted($this->server));
         
     }
 }
