@@ -42,5 +42,7 @@
     echo 'creating config dir'
     sudo -u factorio mkdir -p /opt/factorio/config
     sudo -u factorio wget https://www.dropbox.com/s/0bzugbk9r0cx3pz/config.ini -O /opt/factorio/config/config.ini
+
+    service factorio start
 @endtask
 
