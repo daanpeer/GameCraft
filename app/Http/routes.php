@@ -35,7 +35,7 @@ Route::group(['prefix' => 'api'], function () {
         $arguments = explode(' ', $request->get('text'));
 
         if (strtolower($command) != '/gamecraft') return;
-        
+
         $action = $arguments[0];
         $gameArgument = $arguments[1];
 
