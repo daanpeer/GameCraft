@@ -8,9 +8,12 @@ use App\Jobs\SnapshottingToPaused;
 use App\Jobs\StartedToProvisioning;
 use App\Jobs\StartingToStarted;
 use Illuminate\Console\Command;
+use Illuminate\Foundation\Bus\DispatchesJobs;
 
 class ServerPipeline extends Command
 {
+    use DispatchesJobs;
+    
     /**
      * The name and signature of the console command.
      *
