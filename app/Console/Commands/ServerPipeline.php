@@ -2,16 +2,18 @@
 
 namespace App\Console\Commands;
 
+use App\Jobs\StartedToProvisioning;
+use App\Jobs\StartingToStarted;
 use Illuminate\Console\Command;
 
-class CreateServer extends Command
+class ServerPipeline extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'server:create {game}';
+    protected $signature = 'server:pipeline';
 
     /**
      * The console command description.
@@ -19,8 +21,6 @@ class CreateServer extends Command
      * @var string
      */
     protected $description = 'Command description';
-
-
 
     /**
      * Create a new command instance.
@@ -39,6 +39,7 @@ class CreateServer extends Command
      */
     public function handle()
     {
-        $this->dispatch(new \App\Jobs\CreateServer($this->argument('game')));
+        $this->dispatch(new StartingToStarted());
+        $this->dispatch(new StartedToProvisioning());
     }
 }

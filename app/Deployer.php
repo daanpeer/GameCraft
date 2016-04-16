@@ -8,7 +8,7 @@ class Deployer
 {
     public function create()
     {
-        $this->createDroplet();
+        return $this->createDroplet();
         // TODO: Install game?
     }
 
@@ -29,8 +29,5 @@ class Deployer
 
     function createDroplet()
     {
-
-        $createdDroplet = \DigitalOcean::droplet()->create(str_random(), 'ams3', '2gb', 'ubuntu-14-04-x64');
-        dd($createdDroplet);
     }
 }
