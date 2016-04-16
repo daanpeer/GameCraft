@@ -13,7 +13,7 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 class ServerPipeline extends Command
 {
     use DispatchesJobs;
-    
+
     /**
      * The name and signature of the console command.
      *
