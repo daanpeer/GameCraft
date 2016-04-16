@@ -1,27 +1,46 @@
-# Laravel PHP Framework
+# GameCraft
+Setting up your own gameserver with just one chat message.
 
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
-[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+## The Story
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, queueing, and caching.
+Dear diary, today I had a super good time playing minecraft and factorio with my colleagues. 
+We used GameCraft, a simple application which makes setting up gameservers super easy. Setting up a gameserver was as simple as sending
+"/gamecraft start minecraft" in our slack channel. "George the Gamer", did all the other things for us; Starting the server, bootstrapping the server, installing the game and starting the gameserver.
+When George was finished he send us the address to connect to and we we're able to play minecraft and factorio straight away.
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
+## Installation
 
-## Official Documentation
+todo
 
-Documentation for the framework can be found on the [Laravel website](http://laravel.com/docs).
+## Use GameCraft
 
-## Contributing
+GameCraft can be used in several ways:
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
+- Using the "George the Gamer" as a chatbot in Slack
+- Using GameCraft's web interface
+- Using GameCraft's command line tool 
 
-## Security Vulnerabilities
+##  Using Slack
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+Modify the .env file and set the endpoint, username and channel for the slack chatbot.
+
+Once done you can send commands to GameCraft using messages. The commands you can send are the same as the ones in which are used for the [command line tool](#using-The-command-line-tool)
+
+## Using The command line tool
+
+The following commands are available in GameCraft's command line tool
+
+```
+/gamecraft start {game}
+/gamecraft stop {game}
+/gamecraft resume {game}</pre>
+```
+
+## Using the web interface
+
+todo
+
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+GameCraft is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
