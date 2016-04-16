@@ -157,7 +157,7 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
-
+        GrahamCampbell\DigitalOcean\DigitalOceanServiceProvider::class
     ],
 
     /*
@@ -203,7 +203,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-
+        'DigitalOcean' => GrahamCampbell\DigitalOcean\Facades\DigitalOcean::class,
     ],
 
 ];
