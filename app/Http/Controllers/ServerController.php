@@ -52,7 +52,7 @@ class ServerController extends Controller
     {
         $server = Server::find($id);
 
-        return response()->json($server);
+        return view('server.show')->with('server', $server);
     }
 
     /**
