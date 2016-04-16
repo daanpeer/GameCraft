@@ -24,7 +24,7 @@ class GameService
             return;
         }
 
-        Slack::send('Starting server');
+        Slack::send('Starting server...');
 
         $this->dispatch(new CreateServer($this->getGame()));
     }
@@ -44,6 +44,8 @@ class GameService
             return;
         }
 
+        Slack::send('Stopping server...');
+
         $this->dispatch(new DestroyServer($server));
     }
 
@@ -62,6 +64,8 @@ class GameService
             return;
         }
 
+        Slack::send('Resuming server...');
+
         $this->dispatch(new ResumeServer($server));
     }
 
@@ -79,6 +83,8 @@ class GameService
             Slack::send("The server must be running in order to pause it.");
             return;
         }
+
+        Slack::send('Pausing server...');
 
         $this->dispatch(new PauseServer($server));
     }
