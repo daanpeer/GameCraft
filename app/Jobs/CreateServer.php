@@ -25,8 +25,8 @@ class CreateServer extends Job
         $name = str_random();
 
         $createdDroplet = \DigitalOcean::droplet()->create($name, 'ams3', '2gb', 'ubuntu-14-04-x64', false, false, false, [
-            file_get_contents("~/.ssh/id_rsa.pub"),
-            "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDHLUA0zfzapUDn4lkGB7vxRjQoIEar5LQDS/ETUrQlet/JtSdX779kmFeskzCWE/+e6CiZpiQrysXv3Xk/VTeXyAeK4c1BsJnZxGQUOco909UXin12BvlYp3L7gfE5a2Ssbks+VDzFTCfQSQi5NRTPIQDgg7pfyRovTOAdsrCI4Chdajxaab3U3iG9IpmviDPq+XJ9d9nRfnUDaY1nO13LqxpoRstaRZIZ8u3FDwNfR7aQKl8aUEd5iww/I4aCPR6P7myCy5M90DVJAK8PaFirFXpZB2vFoMZOkbW8Pcq5uG/ll5mLIAarNJAzlDIBQLrNi20hgHp29t6LD4MdqNbX Daan@MacRocket.local"
+            "05:95:d5:ad:01:d8:b3:f8:8b:56:97:8e:37:32:3c:3d",
+            "c7:a3:d0:95:0e:f6:53:5b:95:db:b5:2a:fd:14:d7:63"
         ]);
 
         $server = new Server();
